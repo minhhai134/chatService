@@ -1,10 +1,9 @@
 package JavaL5.chatApp;
 
-import JavaL5.chatApp.Model.Room;
-import JavaL5.chatApp.Repository.RoomRepository;
-import JavaL5.chatApp.Service.*;
-import JavaL5.chatApp.Repository.UserRepository;
-import JavaL5.chatApp.Service.DistributedLockBookingService;
+
+import JavaL5.chatApp.Controller.ChannelController;
+import JavaL5.chatApp.Model.App;
+import JavaL5.chatApp.Repository.AppRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,46 +25,9 @@ public class AppApplication {
 
 	private static int ROOM_QUANTITY = 1;
 	private static int USER_QUANTITY = 10;
-
 	private static int THREAD_QUANTITY = 1;
 	// Neu de so thread la 10 se gay ra van de Timeout
 
-	public static class RequestThread implements Runnable{
-
-		//@Autowired -> Vi sao lai null?
-
-		private int userID;
-		private int roomID;
-
-		private DistributedLockBookingService service;
-
-
-		public RequestThread(DistributedLockBookingService service, int userID, int roomID) {
-			this.userID = userID;
-            this.roomID = roomID;
-			this.service = service;
-
-		}
-
-		@Override
-		public void run() {
-
-			WebClient client = WebClient.create("http://localhost:8081");
-//			WebClient.UriSpec<WebClient.RequestBodySpec> uriSpec = client.post();
-//			WebClient.RequestBodySpec bodySpec = uriSpec.uri("http://localhost:8081/booking/pessimisticLockingBook");
-
-//			client.post()
-//					.uri("/booking/pessimisticLockingBook")
-//					.body(fromFormData("roomID", String.valueOf(roomID)).with("userID", String.valueOf(userID)))
-//					.retrieve()
-//			;
-			log.info("thread run, userID ={}", userID);
-//			for(int i=1; i<=10;i++){ service.receivedRequest(userID);}
-			service.distributedLockBooking(userID,roomID);
-
-
-		}
-	}
 
 
 	public static void main(String[] args) throws InterruptedException {
@@ -73,33 +35,20 @@ public class AppApplication {
 
 		ApplicationContext context = SpringApplication.run(AppApplication.class, args);
 
+//		App app = context.getBean(App.class);
 
-		UserRepository userRepo = context.getBean(UserRepository.class);
-		DistributedLockBookingService service = context.getBean(DistributedLockBookingService.class);
-		RoomRepository roomRepo = context.getBean(RoomRepository.class);
+		AppRepository appRepository = context.getBean(AppRepository.class);
+		ChannelController channelController = context.getBean(ChannelController.class);
 
-		for(int i=1; i<=ROOM_QUANTITY;i++){
-			roomRepo.save(new Room());
-		}
-//
-//		for(int i=1; i<=USER_QUANTITY;i++){
-//			userRepo.save(new User());
-//		}
-
-		List<Thread> allThreads = new ArrayList<>();
-		for(int i=1; i<=THREAD_QUANTITY;i++){
-			Thread thread = new Thread(new RequestThread(service,i,1));
-			thread.start();
-			allThreads.add(thread);
-
-		}
-
-		for(Thread t: allThreads){
-			t.join();
-		}
+		App app = appRepository.save(App.builder().appName("App1").build());
 
 
-		log.info("end");
+
+
+
+
+
+
 
 
 

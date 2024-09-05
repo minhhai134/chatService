@@ -7,17 +7,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.sql.Date;
+
 @Entity
-@Table(name = "User")
+@Table(name = "Message")
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Builder
 @Slf4j
-public class User {
+public class Message {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    private String messageId;
+
+    private String channelId;
+
     private String userId;
 
-    private String clientUserId;
+    private int serialNumber;
+
+    private String content;
+
+    private Date sentTime;
 }
