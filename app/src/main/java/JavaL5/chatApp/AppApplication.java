@@ -40,7 +40,7 @@ public class AppApplication {
 		AppRepository appRepository = context.getBean(AppRepository.class);
 		ChannelController channelController = context.getBean(ChannelController.class);
 
-		App app = appRepository.save(App.builder().appName("App1").build());
+		App app = appRepository.save(App.builder().appName("App1").appApiKey("engineer-pro-key").build());
 
 
 

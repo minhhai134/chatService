@@ -19,6 +19,10 @@ import java.sql.Date;
 @Slf4j
 public class ChannelMembers {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String channelMemberId;
+
     private String channelId;
 
     private String userId;

@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface ChannelRepository extends JpaRepository<Channel,String> {
-    Optional<Channel> findByAppIdAndClientChannelId();
+    Optional<Channel> findByAppIdAndClientChannelId(String appId, String clientChannelId);
 }

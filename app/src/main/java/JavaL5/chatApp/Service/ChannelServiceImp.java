@@ -21,7 +21,8 @@ public class ChannelServiceImp implements ChannelService {
     @Override
     public Channel createChannel(CreateChannelRequest request) {
 
-         if(channelRepository.findByAppIdAndClientChannelId().isPresent()){
+         if(channelRepository.findByAppIdAndClientChannelId(request.getAppId(),
+                 request.getClientChannelId()).isPresent()){
              throw new ChannelExistedException();
          }
 
