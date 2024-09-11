@@ -1,12 +1,10 @@
-package JavaL5.chatApp.Common;
+package JavaL5.chatApp.common;
 
-import JavaL5.chatApp.Model.App;
-import JavaL5.chatApp.Repository.AppRepository;
-import JavaL5.chatApp.Service.AppService;
+import JavaL5.chatApp.model.App;
+import JavaL5.chatApp.service.AppService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import java.io.IOException;

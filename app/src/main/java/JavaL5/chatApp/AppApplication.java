@@ -1,18 +1,14 @@
 package JavaL5.chatApp;
 
 
-import JavaL5.chatApp.Controller.ChannelController;
-import JavaL5.chatApp.Model.App;
-import JavaL5.chatApp.Repository.AppRepository;
+import JavaL5.chatApp.controller.ChannelController;
+import JavaL5.chatApp.model.App;
+import JavaL5.chatApp.repository.AppRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.reactive.function.client.WebClient;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.springframework.web.reactive.function.BodyInserters.fromFormData;
 //exclude = {DataSourceAutoConfiguration.class }

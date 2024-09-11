@@ -1,5 +1,6 @@
-package JavaL5.chatApp.Model;
+package JavaL5.chatApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +20,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
 
+    @ManyToOne
+    @JoinColumn(name = "appId", nullable = false)
+    @JsonIgnore
+    private App app;
+
     private String clientUserId;
+
+    private String userName;
 }

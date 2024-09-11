@@ -1,4 +1,4 @@
-package JavaL5.chatApp.Model;
+package JavaL5.chatApp.model;
 
 
 import jakarta.persistence.*;
@@ -9,24 +9,22 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Entity
-@Table(name = "Channel")
+@Table(name = "App")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 @Slf4j
-public class Channel {
+public class App {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String channelId;
-
-    private String clientChannelId;
-
-    @Column(name = "appId", unique = true)
     private String appId;
 
-    private String channelName;
+    private String clientAppId;
 
-    private int messageQuantity=0;
+    private String appName;
+
+    @Column(name = "appApiKey", unique = true)
+    private String appApiKey;
 }

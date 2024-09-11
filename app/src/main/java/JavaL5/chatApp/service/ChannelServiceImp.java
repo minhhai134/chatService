@@ -1,7 +1,8 @@
-package JavaL5.chatApp.Service;
+package JavaL5.chatApp.service;
 
-import JavaL5.chatApp.Model.Channel;
-import JavaL5.chatApp.Repository.ChannelRepository;
+import JavaL5.chatApp.model.App;
+import JavaL5.chatApp.model.Channel;
+import JavaL5.chatApp.repository.ChannelRepository;
 import JavaL5.chatApp.dto.channel.CreateChannelRequest;
 import JavaL5.chatApp.exception.ChannelExistedException;
 import JavaL5.chatApp.exception.ChannelNotFoundException;
@@ -19,10 +20,10 @@ public class ChannelServiceImp implements ChannelService {
     private ChannelRepository channelRepository;
 
     @Override
-    public Channel createChannel(CreateChannelRequest request) {
+    public Channel createChannel(App app, CreateChannelRequest request) {
 
-         if(channelRepository.findByAppIdAndClientChannelId(request.getAppId(),
-                 request.getClientChannelId()).isPresent()){
+         if(channelRepository.findByAppIdAndClientChannelId(app.getAppId(), request.getClientChannelId())
+                 .isPresent()){
              throw new ChannelExistedException();
          }
 

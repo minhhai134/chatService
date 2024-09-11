@@ -1,7 +1,7 @@
-package JavaL5.chatApp.Controller;
+package JavaL5.chatApp.controller;
 
 
-import JavaL5.chatApp.Model.App;
+import JavaL5.chatApp.model.App;
 import JavaL5.chatApp.dto.app.InspectAppResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

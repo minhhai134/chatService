@@ -1,7 +1,7 @@
 package JavaL5.chatApp.dto.app;
 
 
-import JavaL5.chatApp.Model.App;
+import JavaL5.chatApp.model.App;
 import lombok.Builder;
 import lombok.Data;
 

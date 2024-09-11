@@ -1,7 +1,7 @@
-package JavaL5.chatApp.Controller;
+package JavaL5.chatApp.controller;
 
-import JavaL5.chatApp.Common.AuthenticationFilter;
-import JavaL5.chatApp.Model.App;
+import JavaL5.chatApp.common.AuthenticationFilter;
+import JavaL5.chatApp.model.App;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 

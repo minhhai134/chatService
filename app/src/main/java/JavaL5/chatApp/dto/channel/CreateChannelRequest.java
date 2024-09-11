@@ -11,8 +11,9 @@ public class CreateChannelRequest {
     @NotEmpty
     private String channelName;
 
-    @NotEmpty
-    private String appId;
+//    @NotEmpty
+//    private String appId;
+    // -> app luon duoc authenticate nen neu auth thanh cong thi khong can cung cap appId
 
     @NotEmpty
     private String clientChannelId;

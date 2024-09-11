@@ -1,6 +1,6 @@
-package JavaL5.chatApp.Repository;
+package JavaL5.chatApp.repository;
 
-import JavaL5.chatApp.Model.Channel;
+import JavaL5.chatApp.model.Channel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

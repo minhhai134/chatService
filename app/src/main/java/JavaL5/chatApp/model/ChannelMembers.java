@@ -1,4 +1,4 @@
-package JavaL5.chatApp.Model;
+package JavaL5.chatApp.model;
 
 
 import jakarta.persistence.*;

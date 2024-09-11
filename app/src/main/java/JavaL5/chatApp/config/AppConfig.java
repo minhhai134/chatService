@@ -1,9 +1,8 @@
 package JavaL5.chatApp.config;
 
 
-import JavaL5.chatApp.Common.AuthenticationFilter;
-import JavaL5.chatApp.Service.AppService;
-import JavaL5.chatApp.Service.AppServiceImp;
+import JavaL5.chatApp.common.AuthenticationFilter;
+import JavaL5.chatApp.service.AppService;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

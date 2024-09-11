@@ -1,8 +1,8 @@
-package JavaL5.chatApp.Controller;
+package JavaL5.chatApp.controller;
 
 
-import JavaL5.chatApp.Model.Channel;
-import JavaL5.chatApp.Service.ChannelService;
+import JavaL5.chatApp.model.Channel;
+import JavaL5.chatApp.service.ChannelService;
 import JavaL5.chatApp.dto.channel.CreateChannelRequest;
 import JavaL5.chatApp.dto.channel.CreateChannelResponse;
 import JavaL5.chatApp.dto.channel.GetChannelResponse;
@@ -10,14 +10,13 @@ import JavaL5.chatApp.exception.ChannelExistedException;
 import JavaL5.chatApp.exception.ChannelNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("api/channels")
-public class ChannelController {
+public class ChannelController extends BaseController {
 
 
     @Autowired
@@ -27,7 +26,7 @@ public class ChannelController {
     public ResponseEntity<CreateChannelResponse> createChannel(@Valid @RequestBody CreateChannelRequest request){
 
         try {
-            Channel channel = channelService.createChannel(request);
+            Channel channel = channelService.createChannel(this.getAuthenticatedApp(), request);
 
             return ResponseEntity.ok(CreateChannelResponse.builder().channel(channel).build()) ;
         }
@@ -39,6 +38,10 @@ public class ChannelController {
 
     }
 
+    /*
+      Get Channel by ID
+      -> Get messages of channel,
+    */
     @GetMapping("{id}")
     public ResponseEntity<GetChannelResponse>  getChannelById(@PathVariable String id){
 
