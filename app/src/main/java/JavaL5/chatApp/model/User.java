@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String userId;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "appId", nullable = false)

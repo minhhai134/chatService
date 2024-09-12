@@ -6,8 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
+import java.time.Instant;
 
 @Entity
 @Table(name = "Message")
@@ -21,6 +23,10 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String messageId;
 
+    /*
+    Khong dung String channelId, String userId
+    -> Thay vao do dung cac anotation sau
+     */
     @ManyToOne
     @JoinColumn(name = "channelId", nullable = false)
     @JsonIgnore()
@@ -35,9 +41,13 @@ public class Message {
     /*
     STT cua tin nhan trong cuoc tro chuyen
      */
-    private int serialNumber;
+//  private int serialNumber; -> Thu dung cach khac
 
-    private String content;
+    private String message;
 
-    private Date sentTime;
+    /*
+    Su dung @CreationTimesStamp va Instant type
+     */
+    @CreationTimestamp
+    private Instant sentTime;
 }

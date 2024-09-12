@@ -20,7 +20,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User createUser(App app, CreateUserRequest request) {
 
-        if(userRepository.findByAppAndClientUserId(app, request.getClientUserId()).isPresent())
+        if(userRepository.findByAppIdAndClientUserId(app.getId(), request.getClientUserId()).isPresent())
         { throw new UserExistedException(); }
 
         log.info("User not exist, create now {}", app);

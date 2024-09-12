@@ -19,7 +19,7 @@ public class App {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String appId;
+    private String id;
 
     private String clientAppId;
 

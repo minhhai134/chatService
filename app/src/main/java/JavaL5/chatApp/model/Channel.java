@@ -19,7 +19,7 @@ public class Channel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String channelId;
+    private String id;
 
     private String clientChannelId;
 
