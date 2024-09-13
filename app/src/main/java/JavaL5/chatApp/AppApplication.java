@@ -19,12 +19,6 @@ import static org.springframework.web.reactive.function.BodyInserters.fromFormDa
 @SpringBootApplication
 public class AppApplication {
 
-	private static int ROOM_QUANTITY = 1;
-	private static int USER_QUANTITY = 10;
-	private static int THREAD_QUANTITY = 1;
-	// Neu de so thread la 10 se gay ra van de Timeout
-
-
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -37,17 +31,6 @@ public class AppApplication {
 		ChannelController channelController = context.getBean(ChannelController.class);
 
 		App app = appRepository.save(App.builder().appName("App1").appApiKey("engineer-pro-key").build());
-
-
-
-
-
-
-
-
-
-
-
 
 
 //		User user = userRepo.save(new User());

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -14,6 +15,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "Message")
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 @Slf4j
@@ -21,7 +23,7 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String messageId;
+    private String id;
 
     /*
     Khong dung String channelId, String userId
@@ -37,12 +39,6 @@ public class Message {
     @JsonIgnore()
     private User user;
 
-
-    /*
-    STT cua tin nhan trong cuoc tro chuyen
-     */
-//  private int serialNumber; -> Thu dung cach khac
-
     private String message;
 
     /*
@@ -50,4 +46,14 @@ public class Message {
      */
     @CreationTimestamp
     private Instant sentTime;
+
+
+    /*
+    STT cua tin nhan trong cuoc tro chuyen
+     */
+//  private int serialNumber; -> Thu dung cach khac
+
+
+
+
 }

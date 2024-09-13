@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -39,4 +40,10 @@ public class MessageServiceImp implements MessageService {
 
         return message;
     }
+
+    @Override
+    public List<Message> getMessages(String channelID, String pivotId, int pivot) {
+        return messageRepository.getMessagesByPivot(channelID,pivotId,pivot);
+    }
+
 }
