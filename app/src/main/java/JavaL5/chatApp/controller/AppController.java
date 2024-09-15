@@ -1,6 +1,7 @@
 package JavaL5.chatApp.controller;
 
 
+import JavaL5.chatApp.aop.ratelimiter.RateLimit;
 import JavaL5.chatApp.model.App;
 import JavaL5.chatApp.dto.app.InspectAppResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController extends BaseController {
 
     @GetMapping("/inspect")
+    @RateLimit(limit =2)
     public ResponseEntity<InspectAppResponse> inspectApp(){ // parameter: (HttpServletRequest request)
         App app = this.getAuthenticatedApp();
         log.info("Class = {}, App = {}", app.getClass(), app);

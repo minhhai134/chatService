@@ -14,4 +14,6 @@ public interface ChannelService {
     Channel getChannelById(String id);
 
     Channel getChannelByReferenceID(String refId);
+
+    boolean checkLimit(App app, int timeWindow);
 }
