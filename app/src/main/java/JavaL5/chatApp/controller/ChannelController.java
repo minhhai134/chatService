@@ -44,16 +44,8 @@ public class ChannelController extends BaseController {
     */
     @GetMapping("{id}")
     public ResponseEntity<GetChannelResponse>  getChannelById(@PathVariable String id){
-
-        try{
             Channel channel = channelService.getChannelById(id);
             return ResponseEntity.ok(GetChannelResponse.builder().channel(channel).build());
-        }
-        catch  (ChannelNotFoundException e){
-            return ResponseEntity.notFound().build();
-        }
-
-
 
     }
 

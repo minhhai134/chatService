@@ -51,9 +51,9 @@ public class ChannelServiceImp implements ChannelService {
 
     @Override
     public Channel getChannelById(String id) {
-        Optional<Channel> channel = channelRepository.findById(id);
-        if(channel.isPresent()){ return  channel.get(); }
-        else throw new  ChannelNotFoundException();
+        Optional<Channel> optionalChannel = channelRepository.findById(id);
+
+        return optionalChannel.orElseThrow(() -> new ChannelNotFoundException());
     }
 
     @Override
