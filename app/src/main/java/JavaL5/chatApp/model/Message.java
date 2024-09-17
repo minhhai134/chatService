@@ -13,7 +13,7 @@ import java.sql.Date;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Message")
+@Table(name = "message")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -29,15 +29,19 @@ public class Message {
     Khong dung String channelId, String userId
     -> Thay vao do dung cac anotation sau
      */
-    @ManyToOne
-    @JoinColumn(name = "channelId", nullable = false)
-    @JsonIgnore()
-    private Channel channel;
+//    @ManyToOne
+//    @JoinColumn(name = "channelId", nullable = false)
+//    @JsonIgnore()
+//    private Channel channel;
+    @Column(name = "channelId")
+    private String channelId;
 
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    @JsonIgnore()
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "userId", nullable = false)
+//    @JsonIgnore()
+//    private User user;
+    @Column(name = "userId")
+    private String userId;
 
     private String message;
 

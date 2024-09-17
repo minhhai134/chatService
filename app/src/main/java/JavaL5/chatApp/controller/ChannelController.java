@@ -24,15 +24,8 @@ public class ChannelController extends BaseController {
 
     @PostMapping("/create")
     public ResponseEntity<CreateChannelResponse> createChannel(@Valid @RequestBody CreateChannelRequest request){
-
-        try {
             Channel channel = channelService.createChannel(this.getAuthenticatedApp(), request);
-
             return ResponseEntity.ok(CreateChannelResponse.builder().channel(channel).build()) ;
-        }
-        catch(ChannelExistedException e){
-            return ResponseEntity.notFound().build();
-        }
 
 
 

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Entity
-@Table(name = "App")
+@Table(name = "app")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

@@ -6,6 +6,9 @@ import JavaL5.chatApp.repository.ChannelRepository;
 import JavaL5.chatApp.dto.channel.CreateChannelRequest;
 import JavaL5.chatApp.exception.ChannelExistedException;
 import JavaL5.chatApp.exception.ChannelNotFoundException;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,14 +18,16 @@ import java.time.Duration;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
+
 public class ChannelServiceImp implements ChannelService {
 
     private static final int REQUEST_LIMIT = 2;
     private static final int TIME_WINDOW = 1;
 
-    @Autowired
-    private ChannelRepository channelRepository;
+
+    private final ChannelRepository channelRepository;
 
     /*
     Su dung tam thoi truoc khi trien khai AOP
@@ -33,13 +38,17 @@ public class ChannelServiceImp implements ChannelService {
     @Override
     public Channel createChannel(App app, CreateChannelRequest request) {
 //         if(!checkLimit(app,TIME_WINDOW)) return null;
-
+         log.info("AppID: {} - ClientChannelId: {}", app.getId(), request.getClientChannelId() );
          if(channelRepository.findByAppIdAndClientChannelId(app.getId(), request.getClientChannelId())
                  .isPresent()){
+
              throw new ChannelExistedException();
          }
 
+         log.info("{}", channelRepository.findByAppIdAndClientChannelId(app.getId(), request.getClientChannelId()).toString() );
+
          Channel channel = Channel.builder()
+                 .appId(app.getId())
                  .channelName(request.getChannelName())
                  .clientChannelId(request.getClientChannelId())
                  .build();

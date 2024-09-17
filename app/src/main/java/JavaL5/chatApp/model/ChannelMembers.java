@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.sql.Date;
 
 @Entity
-@Table(name = "ChannelMembers")
+@Table(name = "channelMembers")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

@@ -32,8 +32,8 @@ public class MessageServiceImp implements MessageService {
                 .orElseThrow(()-> new UserNotFoundException());
 //        log.info("{} ---", channelRepository.getReferenceById(channelId));
         Message message = messageRepository.save(Message.builder().
-                channel(channelRepository.getReferenceById(channelId)).
-                user(user).
+                channelId(channelRepository.getReferenceById(channelId).getId()).
+                userId(user.getId()).
                 message(request.getMessage()).
                 sentTime(Instant.now()).
                 build());

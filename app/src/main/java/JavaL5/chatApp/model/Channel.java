@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Entity
-@Table(name = "Channel")
+@Table(name = "channel")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -23,7 +23,7 @@ public class Channel {
 
     private String clientChannelId;
 
-    @Column(name = "appId", unique = true)
+    @Column(name = "appId")
     private String appId;
 
     private String channelName;

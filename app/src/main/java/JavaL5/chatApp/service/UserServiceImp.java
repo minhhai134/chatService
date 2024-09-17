@@ -26,7 +26,7 @@ public class UserServiceImp implements UserService {
         log.info("User not exist, create now {}", app);
 
         User user = User.builder().
-                         app(app).
+                         appId(app.getId()).
                          clientUserId(request.getClientUserId()).
                          userName(request.getUserName()).
                          build();

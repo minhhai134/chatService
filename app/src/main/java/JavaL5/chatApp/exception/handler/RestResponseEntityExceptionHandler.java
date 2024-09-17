@@ -4,6 +4,7 @@ import JavaL5.chatApp.exception.ChannelExistedException;
 import JavaL5.chatApp.exception.ChannelNotFoundException;
 import JavaL5.chatApp.exception.UserExistedException;
 import JavaL5.chatApp.exception.UserNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.Map;
 
 @RestControllerAdvice()
+@Slf4j
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String ERROR_CODE_INTERNAL = "INTERNAL_ERROR";
 
@@ -38,7 +40,8 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
         final ApiExceptionResponse response = ApiExceptionResponse.builder().status(status).
                 errorCode(errorCode).build();
-
+//        log.info("{}", exception.toString());
+//        log.info("{} - {}", response.getStatus(), response.getErrorCode());
         return ResponseEntity.status(response.getStatus()).body(response);
 
     }

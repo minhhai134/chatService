@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user_data")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,10 +20,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne
-    @JoinColumn(name = "appId", nullable = false)
-    @JsonIgnore
-    private App app;
+//    @ManyToOne
+//    @JoinColumn(name = "appId", nullable = false)
+//    @JsonIgnore
+//    private App app;
+
+    @Column(name = "appId")
+    private String appId;
 
     private String clientUserId;
 
